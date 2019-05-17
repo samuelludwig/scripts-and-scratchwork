@@ -22,5 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 tasker-*.tar
 
-.elixir_ls/
+.elixir_ls/*
 
