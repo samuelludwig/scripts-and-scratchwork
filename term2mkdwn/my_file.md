@@ -1,9 +1,10 @@
 ---
-date: Some point between my life and subsequent death.
+date: No time like the present.
 ---
 
 ToDo
 ====
 
-- [x] Figure out how to get input from the terminal and write it to a file using elixir.
-- [ ] Figure out how to do that in a more reasonable/cleaner way.
+- Get back on to that Programming Phoenix book
+- Work more on CliJo
+- Thank Jose
