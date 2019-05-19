@@ -1,28 +1,32 @@
 # Mission: find a way to accept multiple lines of input from the
-# terminal at once, and write the input into an md file.
+# terminal at once, and write the input into an md file 'my_file.md'.
 
+# Naive approach: read line-by-line in a loop until a terminator is
+# reached.
 
-# Naive approach: read line-by-line in a loop until an empty line is reached
-# input = IO.stream(:stdio, :line)
-
-
-# File.write!("./my_file.md", Enum.concat(input))
-
-# Enum.each(input, &File.write!("./my_file.md", &1, mode: [:append]))
 defmodule Term2mkdwn do
   def get_input() do
-
+    IO.gets("> ")
+    |> get_line()
   end
 
-  defp next_line(input) do
-    case input do
-      ":done" ->
-        write_file()
+  defp get_line(line, data \\ "") do
+    case line do
+      ":done\n" ->
+        File.write!("./my_file.md", data, [:append])
       _ ->
-
+        new_data = data <> line
+        get_line(IO.gets("> "), new_data)
     end
   end
-
-
-
 end
+
+Term2mkdwn.get_input()
+
+# Ideal solution: Be able to accept input in a similar fashion to
+# Discord (or some another text message service), where newlines can be
+# entered using `shift-enter` and using `enter` normally would
+# 'complete' the message- allowing the entire input to be edited before
+# entry, even accross newlines. This might likely be unreasonable, and
+# would require a lot of "fighting" the nature of the terminal itself
+# I think.
