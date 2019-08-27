@@ -30,7 +30,7 @@ defmodule Network.Handler do
     end)
 
     :ok = :ranch.accept_ack(ref)
-    :ok = transport.setopts(socket, [{:active, true}])
+    :ok = transport.setopts(socket, [{:active, true}, {:packet, :line}])
 
     :gen_server.enter_loop(__MODULE__, [], %{
       socket: socket,
