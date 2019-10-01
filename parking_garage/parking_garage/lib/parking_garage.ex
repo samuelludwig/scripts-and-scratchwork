@@ -1,6 +1,6 @@
-defmodule ParkingGarageCore do
+defmodule ParkingGarage do
   @moduledoc """
-  Documentation for ParkingGarageCore.
+  Documentation for ParkingGarage.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule ParkingGarageCore do
 
   ## Examples
 
-      iex> ParkingGarageCore.hello()
+      iex> ParkingGarage.hello()
       :world
 
   """

@@ -1,9 +1,9 @@
-defmodule ParkingGarageCore.MixProject do
+defmodule ParkingGarage.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :parking_garage_core,
+      app: :parking_garage,
       version: "0.1.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
