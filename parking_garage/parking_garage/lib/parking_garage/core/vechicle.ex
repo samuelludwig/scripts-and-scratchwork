@@ -7,4 +7,8 @@ defmodule ParkingGarage.Core.Vehicle do
     license_plate: String.t(),
     state: String.t() | nil
   }
+
+  def new(fields) do
+    struct!(__MODULE__, fields)
+  end
 end
