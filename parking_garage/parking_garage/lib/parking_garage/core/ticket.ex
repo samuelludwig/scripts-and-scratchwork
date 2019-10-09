@@ -5,7 +5,7 @@ defmodule ParkingGarage.Core.Ticket do
   @type t() :: %__MODULE__{
     license_plate: String.t(),
     state: String.t() | nil,
-    time_stamp: Date.t()
+    time_stamp: NativeDateTime.t()
   }
 
   def new(fields) do
