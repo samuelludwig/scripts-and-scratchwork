@@ -7,4 +7,9 @@ defmodule ParkingGarageTest.Boundary.GarageServerTest do
     lot = GarageServer.init([])
     assert lot == []
   end
+
+  test "creates an empty parking lot when given no data/args" do
+    lot = GarageServer.init()
+    assert lot == []
+  end
 end
