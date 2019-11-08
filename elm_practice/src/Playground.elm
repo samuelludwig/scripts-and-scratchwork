@@ -1,4 +1,4 @@
-module Playground exposing (main)
+module Playground exposing (main, welcomeMessage, User)
 
 import Html
 
@@ -18,6 +18,25 @@ computeSpeed distance time =
 
 computeTime startTime endTime =
     endTime - startTime
+
+
+type alias User =
+    { name : String
+    , email : String
+    , age : Int
+    , isLoggedIn : Bool
+    }
+
+
+welcomeMessage : User -> String
+welcomeMessage { isLoggedIn, name } =
+    case isLoggedIn of
+        True ->
+            "Welcome " ++ name ++ "!"
+
+        False ->
+            "Please log in."
+
 
 main =
     computeTime 2 3
