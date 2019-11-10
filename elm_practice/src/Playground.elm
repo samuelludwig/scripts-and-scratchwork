@@ -1,6 +1,7 @@
-module Playground exposing (main, welcomeMessage, User)
+module Playground exposing (User, main, welcomeMessage)
 
 import Html
+
 
 escapeEarth myVelocity mySpeed =
     if myVelocity > 11.186 then
@@ -11,6 +12,7 @@ escapeEarth myVelocity mySpeed =
 
     else
         "Come back"
+
 
 computeSpeed distance time =
     distance / time

@@ -1,29 +1,39 @@
-module Counter exposing(Model)
+module Counter exposing (Model)
 
+import Browser
 import Html exposing (..)
 import Html.Events exposing (..)
-import Browser
+
+
 
 -- MODEL
 
+
 type alias Model =
     Int
+
 
 initialModel : Model
 initialModel =
     0
 
+
+
 -- VIEW
+
 
 view : Model -> Html Msg
 view model =
     div []
-        [ button [onClick Decrement] [text "-"]
+        [ button [ onClick Decrement ] [ text "-" ]
         , text (String.fromInt model)
-        , button [onClick Increment] [text "+"]
+        , button [ onClick Increment ] [ text "+" ]
         ]
 
+
+
 -- UPDATE
+
 
 type Msg
     = Increment
