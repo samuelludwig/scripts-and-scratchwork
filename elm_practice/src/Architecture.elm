@@ -2,7 +2,7 @@ module Architecture exposing (Model)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-
+import Html.Events exposing (onClick, onInput)
 
 
 -- MODEL
@@ -97,15 +97,20 @@ randomizer model =
         [ Html.form []
             [ div []
                 [ text "Give me"
-                , input [ id "number_of_processes_for_randomizer", type_ "text" ] []
+                , input
+                      [ id "number-of-processes-for-randomizer"
+                      , type_ "text"
+                      , onInput SaveNumberOfRandomizerProcesses
+                      ]
+                      []
                 ]
             , div []
                 [ text "processes with burst sizes between"
-                , input [ id "randomizer_burst_size_one", type_ "text" ] []
+                , input [ id "randomizer-burst-size-one", type_ "text" ] []
                 ]
             , div []
                 [ text "and"
-                , input [ id "randomizer_burst_size_two", type_ "text" ] []
+                , input [ id "randomizer-burst-size-two", type_ "text" ] []
                 ]
             , div []
                 [ button [type_ "submit" ]
@@ -115,10 +120,48 @@ randomizer model =
         ]
 
 
+
+-- UPDATE
+
+setRandomizerNumberOfProcesses : Int -> Model -> Model
+setRandomizerNumberOfProcesses number ({ randomizer_record } as model) =
+    { model
+    | randomizer_record = { randomizer_record | number_of_processes = number }
+    }
+
+setRandomizerFirstBurstSize : Int -> Model -> Model
+setRandomizerFirstBurstSize number ({ randomizer_record } as model) =
+    { model
+    | randomizer_record = { randomizer_record | lowest_burst_size = number }
+    }
+
+setRandomizerSecondBurstSize : Int -> Model -> Model
+setRandomizerSecondBurstSize number ({ randomizer_record } as model) =
+    { model
+    | randomizer_record = { randomizer_record | highest_burst_size = number }
+    }
+
+type Msg
+    = SaveNumberOfRandomizerProcesses String
+    | SaveFirstRandomizerBurstSize String
+    | SaveSecondRandomizerBurstSize String
+    | AddRandomizerProcesses
+
+update : Msg -> Model -> Model
+update message model =
+    case message of
+        SaveNumberOfRandomizerProcesses number ->
+            setRandomizerNumberOfProcesses number model
+        SaveFirstRandomizerBurstSize number ->
+            setRandomizerFirstBurstSize number model
+        SaveSecondRandomizerBurstSize number ->
+            setRandomizerSecondBurstSize number model
+        AddRandomizerProcesses ->
+            model
+-- MAIN
+
+
 main : Html msg
 main =
     view initial_model
 
-
-
--- UPDATE
